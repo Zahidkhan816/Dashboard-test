@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.css';
-import NewPage from './Compnents/NewPage';
-
+import AdminDB from './Compnents/Admin'
 function App() {
   return (
     <div>
-    <NewPage/>
+      <AdminDB/>
     </div>
   );
 }

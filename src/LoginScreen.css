@@ -424,7 +424,7 @@
   background-color: var(--neutral-white);
   box-shadow: var(--soft-shadow);
   width: 736px;
-  height: 331px;
+  height: auto;
   overflow: hidden;
   flex-shrink: 0;
   padding: var(--padding-5xl);
@@ -578,7 +578,8 @@
   top: 228px;
   left: calc(50% - 564px);
   width: 1128px;
-  height: 999px;
+  height: 623px;
+  border-radius: 1rem;
   font-size: var(--text-bold-super-large-20-size);
   color: var(--gray-500);
 }
