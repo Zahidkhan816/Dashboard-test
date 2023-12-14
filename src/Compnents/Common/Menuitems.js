@@ -1,18 +1,18 @@
-// Menuitem.js
-const MenuItems = [
-    {
-      name: "Dashboard",
-      key: "dashboard"
-    },
-    {
-      name: "Drivers",
-      key: "drivers",
-    },
-    {
-      name: "Restaurants",
-      key: "restaurants"
-    }
-  ];
-  
-  export default MenuItems;
-  
+    // Menuitem.js
+    const MenuItems = [
+        {
+        name: "Dashboard",
+        key: "dashboard"
+        },
+        {
+        name: "User Points",
+        key: "userpoints",
+        },
+        {
+        name: "Redeem",
+        key: "redeem"
+        }
+    ];
+    
+    export default MenuItems;
+    
