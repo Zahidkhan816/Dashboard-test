@@ -19,3 +19,11 @@ line-height: 18px; /* 112.5% */
     background: #E16FA8;
   }
   
+  
+  
+  /* YourComponent.css */
+
+.rotate-btn {
+  border: none;
+  transform: rotate(90deg);
+}
