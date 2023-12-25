@@ -8,9 +8,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/dashboard" element={<AdminDB />} />
+        <Route path="/" element={<AdminDB />} />
       </Routes>
-
     </Router>
   );
 }

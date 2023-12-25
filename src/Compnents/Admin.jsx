@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState ,  } from 'react';
 
 import {
   Layout,
   Card,
-  Input,
+  Input as FormItemInput,
   Badge,
   Button,
   Dropdown,
@@ -13,7 +13,9 @@ import {
   Space,
   Tabs,
   Modal,
-  Form
+  Form,
+  Input,
+  Select,
 } from 'antd';
 import './Admin.css';
 import {
@@ -31,9 +33,7 @@ import Sidebar from './Common/Sidebar';
 const { Sider, Content } = Layout;
 const { Meta } = Card;
 const { TabPane } = Tabs;
-
-
-
+const { Option } = Select;
 const cardsData = [
   { icon: <DashboardOutlined />, title: 'Users ', value: 4002, avg: "16% vs 30Dni" },
   { icon: <CarOutlined />, title: 'Obrót', value: 57820, avg: "26% vs 30Dni" },
@@ -84,9 +84,9 @@ const Admin = () => {
   const color = getRandomColor();
 
   const data = [
-    { key: '1', user: 'John Doe', points: 150, userId: 'ABC123', status: "active" },
-    { key: '2', user: 'Jane Smith', points: 200, userId: 'XYZ456', status: "inactive" },
-    { key: '3', user: 'zahid khan', points: 100, userId: "key41314", status: "pending" }
+    { key: '1', user: 'John Doe', points: 150, userId: 'ABC123', status: "Active" },
+    { key: '2', user: 'Jane Smith', points: 200, userId: 'XYZ456', status: "Inactive" },
+    { key: '3', user: 'zahid khan', points: 100, userId: "key41314", status: "Pending" }
   ];
 
   const columns = [
@@ -99,7 +99,7 @@ const Admin = () => {
       key: 'status',
       render: (text) => {
         const statusStyle = {
-          color: text === 'active' ? '#4BB543' : text === 'inactive' ? '#ff0e0e' : text === 'pending' ? '#f7cb73' : 'inherit',
+          color: text === 'Active' ? '#4BB543' : text === 'Inactive' ? '#ff0e0e' : text === 'Pending' ? '#f7cb73' : 'inherit',
           fontWeight: 'bolder'
         };
         return <span style={statusStyle}>{text}</span>;
@@ -121,7 +121,7 @@ const Admin = () => {
                 ) : (
                   <>
                     <Menu.Item key="3">Delete</Menu.Item>
-                    <Menu.Item key="4">Deactivate</Menu.Item>
+                    <Menu.Item key="4">Suspend</Menu.Item>
                   </>
                 )}
               </Menu>
@@ -137,23 +137,23 @@ const Admin = () => {
   ];
 
   const filteredData = data.filter(item => {
-    if (activeTab === 'active') {
-      return item.status === "active";
-    } else if (activeTab === 'inactive') {
-      return item.status === "inactive" || item.status === "pending";
+    if (activeTab === 'Active') {
+      return item.status === "Active";
+    } else if (activeTab === 'Inactive') {
+      return item.status === "iInactive" || item.status === "Pending";
     }
     return true;
   });
 
   return (
-    <div style={{display:"flex"}}>
+    <div style={{ display: "flex" }}>
       <Sidebar setActiveTab={setActiveTab} />
       <Layout style={{ minHeight: '100vh' }}>
         <Layout>
           <Content>
             <div style={{ display: 'flex', justifyContent: "space-between", padding: '16px' }}>
               <div>
-                <h1>Wellcome to Swagkash</h1>
+                <h2 style={{ fontFamily: "sans-serif" }}>Wellcome to Swagkash</h2>
               </div>
               <div>
                 <div>
@@ -195,7 +195,7 @@ const Admin = () => {
                     </Button>
                   }
                 >
-                  <TabPane tab={<span> Active</span>} key="active">
+                  <TabPane tab={<span> Active</span>} key="Active">
                     <div style={{ padding: '16px' }}>
                       <Table dataSource={filteredData} columns={columns} />
                     </div>
@@ -243,6 +243,16 @@ const Admin = () => {
                       rules={[{ required: true, message: 'Please enter your phone number' }]}
                     >
                       <Input />
+                    </Form.Item>
+                    <label htmlFor="Role">Role*</label>
+                    <Form.Item
+                      name="role"
+                      rules={[{ required: true, message: 'Please select a role' }]}
+                    >
+                      <Select placeholder="Select a role">
+                        <Option value="admin">Admin</Option>
+                        <Option value="member">Member</Option>
+                      </Select>
                     </Form.Item>
                   </Form>
                 </Modal>
